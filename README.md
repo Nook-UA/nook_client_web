@@ -4,8 +4,13 @@ Web platform for parking owners to manage their parking slots
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started
+prepare env file:
+```bash
+echo "$(echo "NEXTAUTH_SECRET=")""$(openssl rand -base64 32)" >> .env.local
+```
 
 First, run the development server:
+
 
 ```bash
 npm run dev
