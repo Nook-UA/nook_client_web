@@ -1,10 +1,12 @@
-import {Navbar, NavbarBrand, NavbarContent, NavbarItem, Link, Button} from "@nextui-org/react";
+import {Navbar, NavbarBrand, NavbarContent, NavbarItem, Link} from "@nextui-org/react";
+import NavbarSession from "./NavBarSession";
 
 function NookNavbar() {
+  
   return (
     <Navbar>
       <NavbarBrand>
-        <p className="font-bold text-inherit">ACME</p>
+        <p className="font-bold text-inherit">NOOK</p>
       </NavbarBrand>
       <NavbarContent className="hidden sm:flex gap-4" justify="center">
         <NavbarItem>
@@ -23,16 +25,7 @@ function NookNavbar() {
           </Link>
         </NavbarItem>
       </NavbarContent>
-      <NavbarContent justify="end">
-        <NavbarItem className="hidden lg:flex">
-          <Link href="#">Login</Link>
-        </NavbarItem>
-        <NavbarItem>
-          <Button as={Link} color="primary" href="#" variant="flat">
-            Sign Up
-          </Button>
-        </NavbarItem>
-      </NavbarContent>
+      <NavbarSession/>
     </Navbar>
   );
 }

@@ -11,8 +11,9 @@ const options = {
             async authorize(credentials,req){
 
                 const dummyUser = {id:1, name: "admin", password: "admin2024"}
-
+                
                 if (credentials?.username === dummyUser.name && credentials?.password === dummyUser.password){
+                    console.log("credentials")
                     return dummyUser
                 }else{
                     return null
