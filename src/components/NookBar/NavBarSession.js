@@ -5,8 +5,6 @@ import { getServerSession } from "next-auth/next";
 async function NavbarSession() {
     const session = await getServerSession(options);
 
-    console.log(session?.user);
-
     return(
         <NavbarContent justify="end">
         {session?.user ? 

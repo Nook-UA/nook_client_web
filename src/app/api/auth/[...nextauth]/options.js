@@ -11,14 +11,24 @@ const options = {
             async authorize(credentials,req){
 
                 const dummyUser = {id:1, name: "admin", password: "admin2024"}
-                
-                if (credentials?.username === dummyUser.name && credentials?.password === dummyUser.password){
-                    console.log("credentials")
-                    return dummyUser
-                }else{
+
+                const response = await fetch(
+                    `http://localhost:8000/api/auth/login?username=${credentials.username}&password=${credentials.password}`,
+                    {
+                        method:"POST"
+                    }
+                )
+                if(!response.ok){
                     return null
                 }
-            }
+
+                const body = await response.json()
+                console.log(body)
+                return {
+                    name: body.username
+                };
+                
+            },
         })
     ],
 
