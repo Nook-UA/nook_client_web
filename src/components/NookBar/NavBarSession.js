@@ -1,16 +1,23 @@
+"use client"
 import options from "../../app/api/auth/[...nextauth]/options";
 import {NavbarContent, NavbarItem, Link, Button} from "@nextui-org/react";
-import { getServerSession } from "next-auth/next";
+import { signOut, useSession } from "next-auth/react";
 
-async function NavbarSession() {
-    const session = await getServerSession(options);
+ function NavbarSession() {
+    const { data: session, status } = useSession(options);
 
+    const handleSignOut =  () => {
+        signOut({
+            redirect: true,
+            callbackUrl: "https://pao.auth.us-east-1.amazoncognito.com/logout?client_id=4foftjuvb0oto1qbs0db3jlbha&logout_uri=http%3A%2F%2Flocalhost%3A3000%2F",
+        });
+    }
     return(
         <NavbarContent justify="end">
         {session?.user ? 
         <>
             <NavbarItem className="hidden lg:flex">
-            <Link href="/api/auth/signout">{session.user.name}</Link>
+            <Link onClick={handleSignOut}>{session.user.email}</Link>
             </NavbarItem>
             <NavbarItem>
             </NavbarItem>
