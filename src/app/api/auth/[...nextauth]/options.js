@@ -24,7 +24,9 @@ const options = {
           return session;
         },
     },
-    debug:true,
+    pages: {
+      signIn: '/auth/signin',
+    },
 
 }
 

@@ -1,60 +1,43 @@
 "use client";
-import { useState } from "react";
-import { useRouter } from "next/navigation";
-import { signIn } from "next-auth/react";
-import { FaLock,FaUserLarge } from "react-icons/fa6";
+import { getProviders,signIn } from "next-auth/react"
+import { SiAmazoncognito } from "react-icons/si";
+import { useEffect, useState } from "react";
+
 
 export default function SignIn() {
-    const [username,setUsername] = useState("");
-    const [password,setPassword] = useState("");
-    const [error, setError] = useState("");
-    const router = useRouter();
+    const [providers, setProviders] = useState([]);
+
+    const signInProvider = async (provider) => {
+        await signIn(provider
+                     , {
+                         redirect:true,
+                         callbackUrl: "/",
+                     }
+        );
+    };
+
+    useEffect(() => {
+        getProviders().then((providers) => setProviders(providers));
+    }, []);
+    console.log(providers);
+    const letterGradient = "bg-clip-text text-transparent bg-gradient-to-r from-[#FFAC75] to-[#C55002]";
 
     return(
-        <div className="flex flex-col font-bold items-center h-full p-20 text-4xl gap-5">
-            <p>Login to Your Account</p>
-            <form className="flex flex-col w-[90%] gap-5 text-3xl"
-                onSubmit={async (e) => {
-                    try {
-                      e.preventDefault();
-                      const response = await signIn("credentials", {
-                        username: username,
-                        password: password,
-                        redirect: false,
-                        callbackUrl: window.location.origin,
-                      });
-                      if (response?.error) throw new Error(response.error);
-                      router.push(response?.url ?? "/");
-                    } catch (error) {
-                      setError(
-                        e instanceof Error ? e.message : "An unknown error occurred."
-                      );
-                    }
-                  }}
-            >
-                <div>
-                    <p>Username</p>
-                    <label className="bg-slate-200 rounded-[20px] text-lg p-1 px-3 flex flex-row items-center mt-1">
-                        <FaUserLarge />
-                        <input name="username" type="text" className="bg-slate-200 text-lg p-1 px-3 focus:outline-none"
-                            onChange={(e) => setUsername(e.target.value)}
-                        />
-                    </label>
-                </div>
-                <div>
-                    <p>Password</p>
-                    <label className="bg-slate-200 rounded-[20px] text-lg p-1 px-3 flex flex-row items-center mt-1">
-                        <FaLock />
-                        <input name="password" type="password" className="bg-slate-200 text-lg p-1 px-3 focus:outline-none"
-                            onChange={(e) => setPassword(e.target.value)}
-                        />
-                    </label>
-                </div>
-                <button type="submit" className="bg-gradient-to-r from-[#FFDAC1] from-0% to-[#FFAC75] to-100% p-1 rounded-[20px]">
-                    Sign in
+        <div className="flex flex-col font-bold items-center gap-[30%] h-full w-full p-20 text-4xl">
+            <div className="w-full flex flex-col gap-1 items-center">
+                <p>Get yourserlf a place</p>
+                <p>to <span className={letterGradient}>park your</span></p>
+                <p><span className={letterGradient}>costumers</span>!</p>
+            </div>
+            {Object.values(providers).map((provider) => (
+                <div key={provider.name} className="w-full">
+                <button onClick={() => signInProvider(provider.id)}
+                        className="bg-[#c57e9d] flex items-center gap-3 px-4 py-2 rounded-[20px] border-1 border-gray-400 text-md w-full justify-center">
+                    <SiAmazoncognito className="transform translate-y-1" />
+                    {provider.name}
                 </button>
-                {error}
-            </form>
+                </div>
+            ))}
         </div>
     )
 }

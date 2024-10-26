@@ -26,8 +26,7 @@ export default function RootLayout({ children }) {
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         <Providers>
-          <NookNavbar></NookNavbar>
-          {children}
+            {children}
         </Providers>
       </body>
     </html>

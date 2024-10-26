@@ -8,8 +8,9 @@ import { signOut, useSession } from "next-auth/react";
 
     const handleSignOut =  () => {
         signOut({
-            redirect: true,
-            callbackUrl: "https://pao.auth.us-east-1.amazoncognito.com/logout?client_id=4foftjuvb0oto1qbs0db3jlbha&logout_uri=http%3A%2F%2Flocalhost%3A3000%2F",
+            redirect: false,
+        }).then(() => {
+            window.location.href = "https://pao.auth.us-east-1.amazoncognito.com/logout?client_id=4foftjuvb0oto1qbs0db3jlbha&logout_uri=http%3A%2F%2Flocalhost%3A3000%2F"
         });
     }
     return(
@@ -25,7 +26,7 @@ import { signOut, useSession } from "next-auth/react";
         :
         <>
             <NavbarItem className="hidden lg:flex">
-            <Link href="/api/auth/signin">Login</Link>
+            <Link href="/auth/signin">Login</Link>
             </NavbarItem>
             <NavbarItem>
             </NavbarItem>
