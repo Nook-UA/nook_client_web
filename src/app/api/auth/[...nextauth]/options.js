@@ -1,41 +1,32 @@
-import CredentialsProvider from "next-auth/providers/credentials";
+import CognitoProvider from "next-auth/providers/cognito";
 
 const options = {
     providers: [
-        CredentialsProvider({
-            credentials: {
-                username: { label: "Username", type: "text"},
-                password: { label: "Password", type: "password"},
-              },
-            async authorize(credentials,req){
-                console.log("chamei")
-
-                const response = await fetch(
-                    `http://localhost:8000/api/auth/login?username=${credentials.username}&password=${credentials.password}`,
-                    {
-                        method:"POST"
-                    }
-                )
-                if(!response.ok){
-                    return null
-                }
-
-                const body = await response.json()
-                return {
-                    name: body.username
-                };
-                
-            },
-        })
+        CognitoProvider({
+            clientId: process.env.COGNITO_CLIENT_ID,
+            clientSecret: process.env.COGNITO_CLIENT_SECRET,
+            issuer: process.env.COGNITO_DOMAIN,
+        }),
     ],
-    pages: {
-        // signIn: '/auth/signin',
-        // signOut: '/auth/signout',
-        // error: '/auth/error', // Error code passed in query string as ?error=
-        // verifyRequest: '/auth/verify-request', // (used for check email message)
-        // newUser: '/auth/new-user' // New users will be directed here on first sign in (leave the property out if not of interest)
+    callbacks: {
+        async jwt({ token, account }) {
+          if (account) {
+            token.accessToken = account.access_token;
+            token.idToken = account.id_token;
+            token.refreshToken = account.refresh_token;
+          }
+          return token;
+        },
+        async session({ session, token }) {
+          session.accessToken = token.accessToken;
+          session.user.idToken = token.idToken;
+          session.refreshToken = token.refreshToken;
+          return session;
+        },
     },
-    debug:true,
+    pages: {
+      signIn: '/auth/signin',
+    },
 
 }
 

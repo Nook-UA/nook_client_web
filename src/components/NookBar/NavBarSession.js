@@ -1,16 +1,24 @@
+"use client"
 import options from "../../app/api/auth/[...nextauth]/options";
 import {NavbarContent, NavbarItem, Link, Button} from "@nextui-org/react";
-import { getServerSession } from "next-auth/next";
+import { signOut, useSession } from "next-auth/react";
 
-async function NavbarSession() {
-    const session = await getServerSession(options);
+ function NavbarSession() {
+    const { data: session, status } = useSession(options);
 
+    const handleSignOut =  () => {
+        signOut({
+            redirect: false,
+        }).then(() => {
+            window.location.href = process.env.LOGOUT_URL
+        });
+    }
     return(
         <NavbarContent justify="end">
         {session?.user ? 
         <>
             <NavbarItem className="hidden lg:flex">
-            <Link href="/api/auth/signout">{session.user.name}</Link>
+            <Link onClick={handleSignOut}>{session.user.email}</Link>
             </NavbarItem>
             <NavbarItem>
             </NavbarItem>
@@ -18,7 +26,7 @@ async function NavbarSession() {
         :
         <>
             <NavbarItem className="hidden lg:flex">
-            <Link href="/api/auth/signin">Login</Link>
+            <Link href="/auth/signin">Login</Link>
             </NavbarItem>
             <NavbarItem>
             </NavbarItem>
