@@ -1,12 +1,11 @@
-"use client";
 import React from "react";
 import { Image } from "@nextui-org/react";
-import { useParams } from "next/navigation";
 
-export default async function Page() {
-  const park_id = useParams().park_id;
+export default async function Page({params}) {
+  const {park_id} = params;
   const parkData = await fetch(`http://localhost:5000/parking_lot/${park_id}`, {
     method: "GET",
+    cache:"no-store"
   }).then((res) => res.json());
 
   console.log("========================================================");
@@ -15,10 +14,10 @@ export default async function Page() {
   console.log("========================================================");
 
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen text-gray-900">
+    <div className="flex flex-col items-center justify-center min-h-screen text-gray-900 w-full">
       <h1 className="text-5xl font-bold text-[#FFAC75] mb-6">Parking Lot Details</h1>
       
-      <div className="w-full">
+      <div className="w-full flex justify-center">
         <Image
           alt={`${park_id} image`}
           className="w-full h-[500px] object-cover"

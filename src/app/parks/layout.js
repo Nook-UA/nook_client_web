@@ -12,7 +12,7 @@ export default function layout({ children }) {
           className="w-[7rem] aspect-square p-4"
         />
       </div>
-      <div>{children}</div>
+      <div className="grow">{children}</div>
     </div>
   );
 }
