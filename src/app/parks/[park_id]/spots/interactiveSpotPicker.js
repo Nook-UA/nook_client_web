@@ -10,9 +10,9 @@ export default function InteractiveSpotPicker({imageUrl,park_id}) {
     const [spots,setSpots] = useState([]);
 
     function relativeCoords ( event ) {
-        var bounds = event.currentTarget.getBoundingClientRect();
-        var x = event.clientX - bounds.left;
-        var y = event.clientY - bounds.top;
+        let bounds = event.currentTarget.getBoundingClientRect();
+        let x = event.clientX - bounds.left;
+        let y = event.clientY - bounds.top;
         let arr = [...points,[x,y]];
         if (arr.length > 3){
             let spotCounter = spots.length;
