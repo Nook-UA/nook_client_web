@@ -8,14 +8,12 @@ export default async function Page({params}) {
     cache:"no-store"
   }).then((res) => res.json());
 
-  console.log("========================================================");
-  console.log(park_id);
-  console.log(parkData);
-  console.log("========================================================");
-
   return (
     <div className="flex flex-col items-center justify-center min-h-screen text-gray-900 w-full">
-      <h1 className="text-5xl font-bold text-[#FFAC75] mb-6">Parking Lot Details</h1>
+      <div className="flex w-[55%] items-center justify-between">
+        <h1 className="text-5xl font-bold text-[#FFAC75] mb-6 ml-auto">Parking Lot Details</h1>
+        <a className="ml-auto" href={`/parks/${park_id}/spots`}><button className="bg-[#FFAC75] flex items-center rounded-[20px] font-bold px-2 h-10">Edit Spots</button></a>
+      </div>
       
       <div className="w-full flex justify-center">
         <Image

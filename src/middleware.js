@@ -6,3 +6,5 @@ export default withAuth({
     signIn: '/auth/signin',
   }
 })
+
+export const config = { matcher: ["/dashboard"] }
