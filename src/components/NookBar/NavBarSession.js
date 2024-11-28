@@ -1,6 +1,6 @@
 "use client"
 import options from "../../app/api/auth/[...nextauth]/options";
-import {NavbarContent, NavbarItem, Link, Button} from "@nextui-org/react";
+import {NavbarContent, NavbarItem, Link} from "@nextui-org/react";
 import { signOut, useSession } from "next-auth/react";
 
  function NavbarSession() {
