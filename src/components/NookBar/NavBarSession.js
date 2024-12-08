@@ -10,7 +10,7 @@ import { signOut, useSession } from "next-auth/react";
         signOut({
             redirect: false,
         }).then(() => {
-            window.location.href = process.env.LOGOUT_URL
+            window.location.href = process.env.NEXT_PUBLIC_LOGOUT_URL
         });
     }
     return(
