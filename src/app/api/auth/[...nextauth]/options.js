@@ -24,7 +24,7 @@ const options = {
           return session;
         },
         async signIn({ user, account, profile, email, credentials }) {
-          const responce = await fetch("http://localhost:8000/client", {
+          const responce = await fetch(`${process.env.BACKEND_URL}/client`, {
             headers: {
               Authorization: `Bearer ${account.id_token}`
             },

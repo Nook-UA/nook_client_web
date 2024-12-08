@@ -14,7 +14,7 @@ export async function actionPost(data) {
     }
     console.log(body);
     const token = await getServerSession(options).then((res) => res?.user?.idToken);
-    const response = await fetch("http://localhost:8000/park", {
+    const response = await fetch(`${process.env.BACKEND_URL}/park`, {
         method: "POST",
         headers: {
             "Content-Type": "application/json",
