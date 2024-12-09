@@ -3,7 +3,7 @@ import { Image } from "@nextui-org/react";
 
 export default async function Page({params}) {
   const {park_id} = params;
-  const parkData = await fetch(`http://localhost:5000/parking_lot/${park_id}`, {
+  const parkData = await fetch(`${process.env.PARKING_DETECTION_URL}/parking_lot/${park_id}`, {
     method: "GET",
     cache:"no-store"
   }).then((res) => res.json());
@@ -19,7 +19,7 @@ export default async function Page({params}) {
         <Image
           alt={`${park_id} image`}
           className="w-full h-[500px] object-cover"
-          src={`http://localhost:5000${parkData.image_url}`}
+          src={`${process.env.PARKING_DETECTION_URL}${parkData.image_url}`}
         />
       </div>
       

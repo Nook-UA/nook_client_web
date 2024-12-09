@@ -23,6 +23,15 @@ const options = {
           session.refreshToken = token.refreshToken;
           return session;
         },
+        async signIn({ user, account, profile, email, credentials }) {
+          const responce = await fetch(`${process.env.BACKEND_URL}/client`, {
+            headers: {
+              Authorization: `Bearer ${account.id_token}`
+            },
+          })
+          console.log(await responce.text())
+          return true
+        },
     },
     pages: {
       signIn: '/auth/signin',

@@ -2,7 +2,7 @@ import React from "react";
 import {Card, CardHeader, CardBody, Image} from "@nextui-org/react";
 
 export default async function page() {
-  const parks = await fetch("http://localhost:8000/park", {
+  const parks = await fetch(`${process.env.BACKEND_URL}/park`, {
     method: "GET",
   }).then((res) => res.json());
   console.log("========================================================")

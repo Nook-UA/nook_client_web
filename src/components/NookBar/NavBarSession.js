@@ -1,6 +1,6 @@
 "use client"
 import options from "../../app/api/auth/[...nextauth]/options";
-import {NavbarContent, NavbarItem, Link, Button} from "@nextui-org/react";
+import {NavbarContent, NavbarItem, Link} from "@nextui-org/react";
 import { signOut, useSession } from "next-auth/react";
 
  function NavbarSession() {
@@ -10,7 +10,7 @@ import { signOut, useSession } from "next-auth/react";
         signOut({
             redirect: false,
         }).then(() => {
-            window.location.href = process.env.LOGOUT_URL
+            window.location.href = process.env.NEXT_PUBLIC_LOGOUT_URL
         });
     }
     return(
