@@ -8,7 +8,7 @@ export async function actionPost(data) {
     console.log(data);
     const body = {
         name: data.get("name"),
-        urlStream: data.get("urlStream"),
+        rtsp_url: data.get("urlStream"),
         latitude: data.get("latitude"),
         longitude: data.get("longitude"),
     }
