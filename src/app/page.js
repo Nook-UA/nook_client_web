@@ -1,4 +1,4 @@
-import NookNavbar from "@/components/NookBar/NookNavbar";
+import NookNavbar from "@/components/NookBar";
 import Image from "next/image";
 
 export default function Home() {
