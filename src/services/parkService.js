@@ -13,7 +13,11 @@ const ParkService = {
         const parks = await fetch(`${process.env.BACKEND_URL}/park`, {
             method: "GET",
             headers: headers
-        })
+        },
+        {
+            cache: "no-store"
+        }
+        )
         return parks;
     }
 }
