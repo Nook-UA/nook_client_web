@@ -24,7 +24,7 @@ export default async function page() {
                 <Link href="/parks/new" className="ml-auto">
                     <Button className="bg-[#ee9559] rounded-md text-white p-2">
                         <IoAddCircleOutline className="text-2xl"/>
-                        Create a new Park
+                        Add a new Park
                     </Button>
                 </Link>
             </div>
