@@ -35,7 +35,7 @@ export default function Page() {
                         onChange={(e) => setData({...data, name: e.target.value})}
                         onFocus={() => setFocused("name")} onBlur={() => setFocused("")}
                         />
-                        <motion.label className="absolute"
+                        <motion.label className="absolute pointer-events-none"
                             animate={data.name || focused === "name" ? 
                                 {scale: 0.8, top: "-15px", left: "0px",backgroundColor: "white",padding: "0 5px"} 
                                 : 
@@ -50,7 +50,7 @@ export default function Page() {
                         onChange={(e) => setData({...data, urlStream: e.target.value})}
                         onFocus={() => setFocused("urlStream")} onBlur={() => setFocused("")}
                         />
-                        <motion.label className="absolute"
+                        <motion.label className="absolute pointer-events-none"
                             animate={data.urlStream || focused === "urlStream" ? 
                                 {scale: 0.8, top: "-15px", left: "0px",backgroundColor: "white",padding: "0 5px"} 
                                 : 
