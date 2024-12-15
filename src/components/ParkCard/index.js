@@ -19,6 +19,9 @@ function ParkCard({park,delay}) {
                 x: -5,
                 boxShadow: "15px 15px 10px rgba(0, 0, 0, 0.4)"
             }}
+            whileTap={
+                {scale: 0.9}
+            }
             onClick={() => router.push(`/parks/${park.id}`)}
         >
         <Card key={park.id} className="py-4 border border-gray-100 rounded-lg bg-white-200 bg-clip-padding backdrop-filter backdrop-blur-md bg-opacity-10">
