@@ -57,7 +57,7 @@ export default function Page() {
                 Add Park
             </h1>
             <div className="flex w-full">
-                <form className="flex flex-col gap-5 pt-2 w-[40%] mr-auto" action={actionPost}>
+                <form className="flex flex-col gap-5 pt-2 w-[40%] mr-auto justify-center" action={actionPost}>
                     <div className="relative">
                         <input type="text" name="name" id="name" className="border-2 border-gray-300 rounded-md p-2 w-full"
                         onChange={(e) => setData({...data, name: e.target.value})}
