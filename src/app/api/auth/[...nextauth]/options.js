@@ -9,17 +9,19 @@ const options = {
         }),
     ],
     callbacks: {
-        async jwt({ token, account }) {
+        async jwt({ token, account, profile }) {
           if (account) {
             token.accessToken = account.access_token;
             token.idToken = account.id_token;
             token.refreshToken = account.refresh_token;
+            token.username = profile["cognito:username"];
           }
           return token;
         },
         async session({ session, token }) {
           session.accessToken = token.accessToken;
           session.user.idToken = token.idToken;
+          session.user.name = token.username;
           session.refreshToken = token.refreshToken;
           return session;
         },

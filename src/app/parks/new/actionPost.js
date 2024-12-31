@@ -3,6 +3,7 @@
 import { getServerSession } from "next-auth";
 import options from "@/app/api/auth/[...nextauth]/options";
 import { redirect } from "next/navigation";
+import { revalidatePath } from "next/cache";
 
 export async function actionPost(data) {
     console.log(data);
@@ -23,5 +24,6 @@ export async function actionPost(data) {
         body: JSON.stringify(body),
     });
     if (response.status == 200)
+        revalidatePath("/parks");
         redirect("/parks");
 }
