@@ -7,6 +7,7 @@ import ParkDetectionService from "@/services/parkDetectionService";
 import { Button } from "@/components";
 import { FaEdit } from "react-icons/fa";
 import Link from "next/link";
+import Mymap from "./Map";
 
 export default async function Page({params}) {
   const {park_id} = params;
@@ -71,6 +72,9 @@ export default async function Page({params}) {
             src={`http://localhost:5000${parkData.image_url}`}
           />
         </div>
+      </div>
+      <div className="w-full h-[450px] border-3 p-1 border-[#ee9559] rounded-md overflow-hidden mt-3">
+        <Mymap position={{latitude: parkStaticData.latitude, longitude: parkStaticData.longitude}}/> 
       </div>
     </div>
   );
