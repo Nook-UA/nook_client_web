@@ -19,7 +19,7 @@ export default function SignIn() {
     useEffect(() => {
         getProviders().then((providers) => setProviders(providers));
     }, []);
-    console.log(providers);
+
     const letterGradient = "bg-clip-text text-transparent bg-gradient-to-r from-[#FFAC75] to-[#C55002]";
 
     return(
