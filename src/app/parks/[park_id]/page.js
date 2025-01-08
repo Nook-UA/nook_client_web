@@ -75,7 +75,7 @@ export default async function Page({params}) {
           <Image
             alt={`${park_id} image`}
             className="w-full aspect-video"
-            src={`http://localhost:5000${parkData.image_url}`}
+            src={`${process.env.NEXT_PUBLIC_PARKING_DETECTION_URL}${parkData.image_url}`}
           />
         </div>
       </div>
