@@ -29,14 +29,14 @@ function ParkCard({park,delay}) {
                 <Image
                     alt={`${park.name} image`}
                     className="object-cover rounded-xl"
-                    src={park.image || "https://nextui.org/images/hero-card-complete.jpeg"}
+                    src={park.picture}
                     width={270}
-                    />
+                    height={200}
+                />
             </CardBody>
             <CardHeader className="flex-col items-start px-4 pt-2 pb-0">
                 <h1 className="text-lg font-bold uppercase">{park.name}</h1>
                 <small className="text-default-500">{park.location}</small>
-                <h4 className="text-sm font-light underline">Park Details</h4>
             </CardHeader>
         </Card>
         </motion.button>

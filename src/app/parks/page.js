@@ -4,8 +4,12 @@ import { FaParking } from "react-icons/fa";
 import { Button, ParkCard } from "@/components";
 import { IoAddCircleOutline } from "react-icons/io5";
 import Link from "next/link";
+import { getServerSession } from "next-auth/next";
+import options from "@/app/api/auth/[...nextauth]/options";
 
 export default async function page() {
+    const token = await getServerSession(options).then((res) => res?.user?.idToken);
+    console.log(token);
     let parks = [];
     const parksFetch = await ParkService.getParks();
     
@@ -30,7 +34,7 @@ export default async function page() {
             <line className="w-full bg-gray-200 h-[3px] my-2 rounded-full"/>
             <div className="flex flex-row flex-wrap gap-4 p-4">
                 {parks && parks.map((park,index) => (
-                    <ParkCard park={park} delay={index}/>
+                    <ParkCard park={park} delay={index} key={index}/>
                 ))}
             </div>
         </div>

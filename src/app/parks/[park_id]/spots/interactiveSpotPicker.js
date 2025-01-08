@@ -24,7 +24,7 @@ export default function InteractiveSpotPicker({imageUrl,park_id}) {
     }
 
     function submit(){
-        fetch(`${process.env.PARKING_DETECTION_URL}/parking_lot/${park_id}/spots`,{
+        fetch(`${process.env.NEXT_PUBLIC_PARKING_DETECTION_URL}/parking_lot/${park_id}/spots`,{
             headers: {
                 'Accept': 'application/json',
                 'Content-Type': 'application/json'

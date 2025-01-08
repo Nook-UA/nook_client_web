@@ -23,7 +23,6 @@ function AuthLayout({ children }){
                     <div className="h-full flex flex-col justify-center items-end">
                         <p className="text-end w-full text-7xl font-bold">Get To Know</p>
                         <Image priority src={NookLogo} alt="Nook Logo" className="w-[90%]"/>
-                        <p className="text-lg1">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.</p>
                     </div>
                 </div>
             </div>
