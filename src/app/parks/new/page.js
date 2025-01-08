@@ -30,7 +30,6 @@ export default function Page() {
             setWarning(true)
             return
         }
-        console.log(e.currentTarget.form)
         e.currentTarget.form?.requestSubmit()
     }
 

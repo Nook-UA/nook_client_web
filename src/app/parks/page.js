@@ -9,7 +9,6 @@ import options from "@/app/api/auth/[...nextauth]/options";
 
 export default async function page() {
     const token = await getServerSession(options).then((res) => res?.user?.idToken);
-    console.log(token);
     let parks = [];
     const parksFetch = await ParkService.getParks();
     

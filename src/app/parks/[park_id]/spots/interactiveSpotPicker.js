@@ -37,7 +37,6 @@ export default function InteractiveSpotPicker({imageUrl,park_id}) {
     function undo(){
         setPoints([])
         if (spots.length === 0) return;
-        console.log(spots.slice(0,spots.length - 1))
         setSpots(spots.slice(0,spots.length - 1))
     }
 
@@ -49,7 +48,6 @@ export default function InteractiveSpotPicker({imageUrl,park_id}) {
         let angle =  Math.atan2(point2[1] - point1[1], point2[0] - point1[0]);
         angle *= 180 / Math.PI;
         angle -= 90;
-        console.log(angle)
         return angle
     }
 
