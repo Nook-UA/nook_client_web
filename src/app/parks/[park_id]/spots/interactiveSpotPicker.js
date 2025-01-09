@@ -3,7 +3,7 @@ import { Button } from "@nextui-org/react";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 
-export default function InteractiveSpotPicker({imageUrl,park_id}) {
+export default function InteractiveSpotPicker({imageUrl,park_id,url}) {
     
     const router = useRouter();
     const [points, setPoints] = useState([]);
@@ -24,7 +24,7 @@ export default function InteractiveSpotPicker({imageUrl,park_id}) {
     }
 
     function submit(){
-        fetch(`${process.env.NEXT_PUBLIC_PARKING_DETECTION_URL}/parking_lot/${park_id}/spots`,{
+        fetch(`${url}/parking_lot/${park_id}/spots`,{
             headers: {
                 'Accept': 'application/json',
                 'Content-Type': 'application/json'

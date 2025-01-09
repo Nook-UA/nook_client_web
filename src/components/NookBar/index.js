@@ -23,10 +23,10 @@ function NookNavbar() {
           Menu
         </div>
         <div className="w-full pl-3 pr-2 flex flex-col gap-3 text-white">
-          <NavButton props={{href: "/dashboard"}}>
+          {/* <NavButton props={{href: "/dashboard"}}>
             <FaGaugeHigh className="text-xl"/>
             Dashboard
-          </NavButton>
+          </NavButton> */}
           <NavButton props={{href: "/parks"}}>
             <FaParking className="text-xl"/>
             Parks
